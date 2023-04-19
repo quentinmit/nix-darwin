@@ -37,7 +37,7 @@ in
       ''
         mkdir -p $out/Library/Fonts
         for path in $paths; do
-            find -L $path/share/fonts -type f -print0 | while IFS= read -rd "" f; do
+            [ -d $path/share/fonts ] && find -L $path/share/fonts -type f -print0 | while IFS= read -rd "" f; do
                 ln -sf "$f" $out/Library/Fonts
             done
         done
